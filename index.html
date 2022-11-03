@@ -5,12 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <!-- using Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-    
+    <header class="text-center bg-success p-3">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="row vh-100">
+        <section id="searchContainer" class="col-3 bg-primary">
+            <!-- inside this will go the 'search' form, as well as a list (`ul`) below it of search history (locally stored) -->
+            <form action="#" class="">
+                <label for="citySearch" class="form-label d-block text-center">Search for a city:</label>
+                <input type="text" class="form-control m-1" id="citySearch">
+                <button id="submitSearch" class="w-100 bg-success m-1">Go</button>
+            </form>
+        </section>
+        <section id="weatherContainer" class="col-9 bg-dark">
+            <article id="currentWeather">
+                <!-- the current day weather info will go here -->
+            </article>
+            <article id="fiveDayForecast">
+                <!-- the five day forecast will go here -->
+                <!-- maybe 5 col-2 boxes, with an offset of col-1 on each side, or jsut space them evenly -->
+            </article>
+        </section>
+    </main>
+
+    <!-- no footer needed -->
+
+    <!-- using jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
