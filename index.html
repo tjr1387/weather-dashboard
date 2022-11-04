@@ -12,26 +12,47 @@
 </head>
 
 <body>
-    <header class="text-center bg-success p-3">
+    <header class="text-center bg-success p-2">
         <h1>Weather Dashboard</h1>
     </header>
     <main class="row vh-100">
         <section id="searchContainer" class="col-3 bg-primary">
             <!-- inside this will go the 'search' form, as well as a list (`ul`) below it of search history (locally stored) -->
-            <form action="#" class="">
+            <form action="#" class="pb-3 border-bottom">
                 <label for="citySearch" class="form-label d-block text-center">Search for a city:</label>
-                <input type="text" class="form-control m-1" id="citySearch">
-                <button id="submitSearch" class="w-100 bg-success m-1">Go</button>
+                <input type="text" class="form-control m-1" id="citySearch">    <!-- maybe an 'onfocus' border for highlighting-->
+                <button id="submitSearch" class="w-100 bg-success m-1 p-2 rounded-pill">Go</button>
             </form>
+            <ul id="searchHistory" class="mt-3">
+                <!-- will create and append 'li's dynamically as searches are made -->
+                    <!-- class styling for the li's: "w-100 p-2 text-center m-1 rounded", also maybe give a background color and font/fontsize/fontweight in custom CSS -->
+            </ul>
         </section>
-        <section id="weatherContainer" class="col-9 bg-dark">
-            <article id="currentWeather">
+        <section id="weatherContainer" class="col-9">
+            <div id="currentWeather" class="border border-success m-2">
                 <!-- the current day weather info will go here -->
-            </article>
-            <article id="fiveDayForecast">
-                <!-- the five day forecast will go here -->
-                <!-- maybe 5 col-2 boxes, with an offset of col-1 on each side, or jsut space them evenly -->
-            </article>
+                <!-- <h2 class="mb-4">City and Date</h2>
+                <p>Temp: number</p>
+                <p>Wind: number</p>
+                <p>Humidity: number</p> -->
+            </div>
+            <div id="fiveDayForecast" class="border border-danger m-2">
+                <h3 class="ml-3 pb-2">5-Day Forecast:</h3>
+                <div id="cardsContainer row">
+                    <!-- form for the card for each of the 5 days: -->
+
+                    <!-- <div class="card col-2 mx-3 bg-primary">
+                        <div class="card-body p-2">
+                            <h4 class="card-title">8/31/22</h5>
+                            <p class="card-text">IMAGE ICON</p>
+                            <p class="card-text">Temp: number</p>
+                            <p class="card-text">Wind: number</p>
+                            <p class="card-text">Humidity: number</p>
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
         </section>
     </main>
 

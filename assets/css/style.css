@@ -1,3 +1,8 @@
 body {
     background-color: lightcyan;
 }
+
+/* These containers need a custom height; Bootstrap's classes only allow multiples of 25 */
+#weatherContainer > div {
+    height: 40%;
+}
