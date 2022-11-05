@@ -1,5 +1,14 @@
 body {
+    font-family: 'Trebuchet', sans-serif;
     background-color: lightcyan;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+#citySearch:focus {
+    border: 2px solid orange;
 }
 
 #currentWeather {
@@ -20,4 +29,9 @@ body {
     color: white;
     font-size: 15px;
     font-weight: 500;
+}
+
+/* This is for the li's in the search history */
+.history-item {
+    font-weight: 600;
 }

@@ -16,20 +16,20 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main class="row vh-100">
-        <section id="searchContainer" class="col-3 bg-primary">
+        <section id="searchContainer" class="col-2 bg-primary">
             <!-- inside this will go the 'search' form, as well as a list (`ul`) below it of search history (locally stored) -->
-            <form action="#" class="pb-3 border-bottom">
+            <form action="#" id="searchForm" class="pb-3 m-2 border-bottom">
                 <label for="citySearch" class="form-label d-block text-center">Search for a city:</label>
                 <input type="text" class="form-control m-1" id="citySearch">    <!-- maybe an 'onfocus' border for highlighting-->
-                <button id="submitSearch" class="w-100 bg-success m-1 p-2 rounded-pill">Go</button>
+                <button id="submitSearch" class="w-100 bg-success m-1 p-1 rounded">Go</button>
             </form>
             <ul id="searchHistory" class="mt-3">
                 <!-- will create and append 'li's dynamically as searches are made -->
                     <!-- class styling for the li's: "w-100 p-2 text-center m-1 rounded", also maybe give a background color and font/fontsize/fontweight in custom CSS -->
             </ul>
         </section>
-        <section id="weatherContainer" class="col-9">
-            <div id="currentWeather" class="border border-success m-2">
+        <section id="weatherContainer" class="col-10">
+            <div id="currentWeather" class="m-2 p-1">
                 <!-- the current day weather info will go here -->
                 <!-- <h2 class="mb-4">City and Date</h2>
                 <p>Temp: number</p>
@@ -37,7 +37,7 @@
                 <p>Humidity: number</p> -->
             </div>
             <div id="fiveDayForecast" class="m-2">
-                <h3>5-Day Forecast:</h3>
+                <h3 id="fiveDayLabel" hidden>5-Day Forecast:</h3>
                 <div id="cardsContainer" class="row">
                     <!-- form for the card for each of the 5 days: -->
 

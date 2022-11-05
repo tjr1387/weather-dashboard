@@ -48,6 +48,7 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             const currentWeatherObject = {
                 city: `${data.name}`,
                 date:  convertTenDigitDate(data.dt),
@@ -66,6 +67,7 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             // Loop to find the first element (midnight) of tomorrow in the 40-length forecast list
                 // This index changes depending on the time of day the fetch is made, hence the comparison loop
             let startIndex = 0;
@@ -97,6 +99,7 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             }
             buildCurrent(currentObject);
             buildFiveDay(forecastArray);
+            setStorage(currentObject.city);
         })
 }
 
@@ -107,11 +110,12 @@ function buildCurrent(object) {
     const tempEl = $('<p>').text(object.temp);
     const windEl = $('<p>').text(object.wind);
     const humidityEl = $('<p>').text(object.humidity);
-    $('#currentWeather').append(cityDate, icon, tempEl, windEl, humidityEl);
+    $('#currentWeather').addClass('border border-success').append(cityDate, icon, tempEl, windEl, humidityEl);
 }
 
 // Using the array of object built from the 5-day forecast fetch call, renders its 'card' elements
 function buildFiveDay(objArray) {
+    document.getElementById('fiveDayLabel').hidden = false;
     for (let o of objArray) {
         const dayCard = $('<div>').addClass('card col-2 m-3 bg-primary');
         const cardBody = $('<div>').addClass('card-body p-1');
@@ -127,6 +131,49 @@ function buildFiveDay(objArray) {
         cardBody.append(date, icon, tempEl, windEl, humidityEl);
 
         $('#cardsContainer').append(dayCard);
+    }
+}
+
+// Function will do two things, within a successfully fetched/rendered city search:
+    // Add 'li' of the searched city to the history 'ul'
+    // Add the searched city to local storage (if it isn't already in there)
+function addToSearchList (cityStr) {
+    // Create the 'li', put the city string in it, and add Bootstrap style classes
+    const cityListEl = $('<li>').text(cityStr).addClass('history-item w-100 p-2 text-center m-1 rounded bg-warning');
+    // Add to the 'ul'
+    $('#searchHistory').append(cityListEl);
+}
+
+// Function that adds searched city to localStorage; will factor in three cases: 
+    // There is no storage/history yet
+    // There is storage/history but not this particular city
+    // There is storage and this city has already been added
+function setStorage (cityStr) {
+    const storageArray = JSON.parse(localStorage.getItem("history"));
+    if (!storageArray) {
+        // Creates an array and the first entry into both that array and storage
+        localStorage.setItem("history", JSON.stringify([cityStr]))
+        addToSearchList(cityStr);
+    } else {
+        if (!storageArray.includes(cityStr)) {
+            // Adds to array of searched cities, if it hasn't already been searched
+            storageArray.push(cityStr);
+            localStorage.setItem("history", JSON.stringify(storageArray));
+            addToSearchList(cityStr);
+        }
+    }
+}
+
+// Upon page [re]load, will add locally stored search history, if it exists
+    // This is the 'persist stored data' function
+function getStorage() {
+    const storageArray = JSON.parse(localStorage.getItem("history"));
+    // If any storage already exists (it should be an array), render the list items into search history element
+    if (storageArray.length) {
+        for (city of storageArray) {
+            // For each city in the array 'searched', runs the function that creates/appens the 'li'
+            addToSearchList(city);
+        }
     }
 }
 
@@ -165,6 +212,12 @@ function forceDayIcon (string) {
     return result;
 }
 
+
+
+// Load persisted search history into the list
+getStorage();
+
+
 // Event listeners
 
 // City search (form submission)
@@ -178,6 +231,6 @@ $('#searchForm').submit(function(event) {
     const searchCity = cityOnly(searchedVal);
     // Run the big boy function to render the weather elements
     getForecasts(searchCity);
-    // also take the step to add this to local storage -- should actually do this somewhere else in the chain (inside getForecassts probably)
-
+    // Clear input box
+    $('#citySearch').val('');
 });
