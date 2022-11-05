@@ -48,7 +48,6 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             const currentWeatherObject = {
                 city: `${data.name}`,
                 date:  convertTenDigitDate(data.dt),
@@ -67,7 +66,6 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             // Loop to find the first element (midnight) of tomorrow in the 40-length forecast list
                 // This index changes depending on the time of day the fetch is made, hence the comparison loop
             let startIndex = 0;
@@ -223,14 +221,28 @@ getStorage();
 // City search (form submission)
 $('#searchForm').submit(function(event) {
     event.preventDefault();
-    // Empties container elements
+    // Empty container elements
     forecastArray = [];
     $('#cardsContainer, #currentWeather').empty();
     // Grab the search input from form and strip the state (or, anything after a comma) off
     const searchedVal = $('#citySearch').val();
     const searchCity = cityOnly(searchedVal);
-    // Run the big boy function to render the weather elements
+    // Run the big boy function to render the weather/forecast elements
     getForecasts(searchCity);
     // Clear input box
     $('#citySearch').val('');
 });
+
+// City search (clicked item in search history)
+    // Setting the event on the 'ul', then delegating to the target child 'li'
+$('#searchHistory').click(function(event) {
+    const clickedEl = event.target;
+    // In correct case, where an 'li' in the 'ul' was hit..
+    if (clickedEl.matches('.history-item')) {
+        // Empty container elements
+        forecastArray = [];
+        $('#cardsContainer, #currentWeather').empty();
+        // Run the big boy function to render the weather/forecast elements in the city inside the clicked 'li'
+        getForecasts(clickedEl.innerText);
+    }
+})

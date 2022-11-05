@@ -35,3 +35,9 @@ h3 {
 .history-item {
     font-weight: 600;
 }
+
+.history-item:hover {
+    border: 1px solid purple;
+    opacity: 80%;
+    cursor: pointer;
+}
