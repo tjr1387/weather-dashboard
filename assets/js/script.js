@@ -172,7 +172,7 @@ function setStorage (cityStr) {
 function getStorage() {
     const storageArray = JSON.parse(localStorage.getItem("history"));
     // If any storage already exists (it should be an array), render the list items into search history element
-    if (storageArray.length) {
+    if (storageArray) {
         for (city of storageArray) {
             // For each city in the array 'searched', runs the function that creates/appens the 'li'
             addToSearchList(city);
