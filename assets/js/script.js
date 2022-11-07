@@ -21,7 +21,7 @@ function getForecasts(city) {
         })
         .then(function (data) {
             // Takes coords from parsed response and builds the URL for the next fetch, using those coords
-            if (data) {
+            if (data.length) {
 
                 const cityLat = data[0].lat;
                 const cityLon = data[0].lon;
