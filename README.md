@@ -14,7 +14,7 @@ When the user puts in a city to be searched, fetch requests to the Open Weather 
 
 Screenshot(s): ![With a big search history!](/assets/my-mockup.png?raw=true)
 
-Link to live site: 
+Link to live site: https://tjr1387.github.io/weather-dashboard/
 
 
 ## Flaws/Comments
