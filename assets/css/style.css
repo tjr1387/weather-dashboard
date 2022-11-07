@@ -1,5 +1,6 @@
 :root {
     --dark-purple: rgb(28, 1, 63);
+    --tranzish: .4s ease-in-out;
 }
 
 body {
@@ -59,4 +60,30 @@ h3 {
     border: 1px solid var(--dark-purple);
     opacity: 80%;
     cursor: pointer;
+}
+
+/* Media queries */
+
+@media (max-width: 1000px) {
+    .card-title {
+        font-size: 14px;
+        transition: var(--tranzish);
+    }
+    
+    .card-body p {
+        font-size: 10px;
+        transition: var(--tranzish);
+    }
+
+    .history-item {
+        font-size: 11px;
+        transition: var(--tranzish);
+    }
+}
+
+
+@media (max-width: 750px) {
+    #searchContainer {
+        
+    }
 }

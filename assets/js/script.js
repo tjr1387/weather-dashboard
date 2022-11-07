@@ -118,7 +118,7 @@ function buildCurrent(object) {
 function buildFiveDay(objArray) {
     document.getElementById('fiveDayLabel').hidden = false;
     for (let o of objArray) {
-        const dayCard = $('<div>').addClass('card col-2 m-3 bg-primary');
+        const dayCard = $('<div>').addClass('card col-lg-2 col-md-3 col-sm-4 m-3 bg-primary');
         const cardBody = $('<div>').addClass('card-body p-1');
 
         dayCard.append(cardBody);
@@ -187,7 +187,7 @@ function reformatDate(dateField) {
 
 // Helper function to convert the 10-digit timestamp (from current forecast) into the uniform date format
 
-    // Give credit for this?
+    // Give credit for this? http://danhounshell.com/
 
 function convertTenDigitDate(timestamp) {
     const pubDate = new Date(timestamp * 1000);
