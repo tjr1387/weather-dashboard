@@ -1,12 +1,9 @@
-// Global variables
+// GLobal variables
 const apiKey = '6c6f4753724094c73aa3d202e8779c99';
 
-    // Global containers for the current weather object, and the five day forecast object array
-let currentObject;
+    // Container for the five day forecast object array
+        // Made this global because so it can be cleared (from outside the fetch call) upon a new search event
 let forecastArray = [];
-
-// let currFetchDone;
-// let fiveDayFetchDone;
 
     // Grabbing current day of month to use as comparison to target the starting index of tomorrows day of month in hte five day forecast
 const currDay = new Date().getDate();
@@ -57,9 +54,13 @@ function getWeatherFields(currUrl, fiveDayUrl) {
                 wind: `Wind: ${data.wind.speed} MPH`,
                 humidity: `Humidity: ${data.main.humidity}%`                
             };
-            currentObject = currentWeatherObject;
-
-            return fiveDayUrl;
+            // Runs the function to build the HTML elemnts for current weather, as well as add the city to history/storage
+            buildCurrent(currentWeatherObject);
+            setStorage(currentWeatherObject.city);
+        })
+        .catch(function (error) {
+            emptyContainers();
+            $('#currentWeather').append($('<p>').text(`Hmm.. something went wrong \n ${error.message}`));
         })
     fetch(fiveDayUrl)
         .then(function (response) {
@@ -95,9 +96,11 @@ function getWeatherFields(currUrl, fiveDayUrl) {
                 }
                 forecastArray.push(weatherObject);
             }
-            buildCurrent(currentObject);
             buildFiveDay(forecastArray);
-            setStorage(currentObject.city);
+        })
+        .catch(function (error) {
+            emptyContainers();
+            $('#currentWeather').append($('<p>').text(`Hmm.. something went wrong.. \n ${error.message}`));
         })
 }
 
@@ -210,6 +213,13 @@ function forceDayIcon (string) {
     return result;
 }
 
+// Helper function to clear out the forecast elements, and the global 5-day array
+    // Will be in 4 different places, so it has been pulled out into its own function
+function emptyContainers() {
+    forecastArray = [];
+    $('#cardsContainer, #currentWeather').empty();
+}
+
 
 
 // Load persisted search history into the list
@@ -222,8 +232,7 @@ getStorage();
 $('#searchForm').submit(function(event) {
     event.preventDefault();
     // Empty container elements
-    forecastArray = [];
-    $('#cardsContainer, #currentWeather').empty();
+    emptyContainers();
     // Grab the search input from form and strip the state (or, anything after a comma) off
     const searchedVal = $('#citySearch').val();
     const searchCity = cityOnly(searchedVal);
@@ -240,8 +249,7 @@ $('#searchHistory').click(function(event) {
     // In correct case, where an 'li' in the 'ul' was hit..
     if (clickedEl.matches('.history-item')) {
         // Empty container elements
-        forecastArray = [];
-        $('#cardsContainer, #currentWeather').empty();
+        emptyContainers();
         // Run the big boy function to render the weather/forecast elements in the city inside the clicked 'li'
         getForecasts(clickedEl.innerText);
     }
