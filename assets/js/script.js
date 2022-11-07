@@ -21,7 +21,7 @@ function getForecasts(city) {
         })
         .then(function (data) {
             // Takes coords from parsed response and builds the URL for the next fetch, using those coords
-            if (data.length) {
+            if (data) {
 
                 const cityLat = data[0].lat;
                 const cityLon = data[0].lon;
@@ -34,6 +34,10 @@ function getForecasts(city) {
                 // Shows a 'no results' message if search came up empty (i.e. badly typo-ed, un-autocomplet-able input)
                 $('#currentWeather').append($('<p>').text('No results found -- please check for typos'));
             }
+        })
+        .catch(function (error) {
+            emptyContainers();
+            $('#currentWeather').append($('<p>').text(`Hmm.. something went wrong \n ${error.message}`));
         })
 }
 
