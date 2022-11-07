@@ -14,7 +14,7 @@ const currDay = new Date().getDate();
 // The top-level fetch sequence function -- will get called based upon the 'form submission' event listener
 function getForecasts(city) {
     // Builds URL based on input city, fetches coordinates
-    const coordFetchUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+    const coordFetchUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     fetch(coordFetchUrl)
         .then(function (response) {
             return response.json();
