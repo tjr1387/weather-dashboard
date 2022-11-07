@@ -20,38 +20,22 @@
             <!-- inside this will go the 'search' form, as well as a list (`ul`) below it of search history (locally stored) -->
             <form action="#" id="searchForm" class="pb-3 m-2 border-bottom">
                 <label for="citySearch" class="form-label d-block text-center">Search for a city:</label>
-                <input type="text" class="form-control m-1" id="citySearch">    <!-- maybe an 'onfocus' border for highlighting-->
+                <input type="text" class="form-control m-1" id="citySearch">
                 <button id="submitSearch" class="w-100 text-white m-1 p-1 rounded border border-white">Go</button>
             </form>
             <ul id="searchHistory" class="mt-3">
                 <!-- will create and append 'li's dynamically as searches are made -->
-                    <!-- class styling for the li's: "w-100 p-2 text-center m-1 rounded", also maybe give a background color and font/fontsize/fontweight in custom CSS -->
             </ul>
         </section>
         <section id="weatherContainer" class="col-10">
             <div id="currentWeather" class="m-2 p-1">
                 <!-- the current day weather info will go here -->
-                <!-- <h2 class="mb-4">City and Date</h2>
-                <p>Temp: number</p>
-                <p>Wind: number</p>
-                <p>Humidity: number</p> -->
             </div>
             <div id="fiveDayForecast" class="m-2">
                 <h3 id="fiveDayLabel" hidden>5-Day Forecast:</h3>
                 <div id="cardsContainer" class="row">
-                    <!-- form for the card for each of the 5 days: -->
-
-                    <!-- <div class="card col-2 mx-3 bg-primary">
-                        <div class="card-body p-2">
-                            <h4 class="card-title">8/31/22</h5>
-                            <p class="card-text">IMAGE ICON</p>
-                            <p class="card-text">Temp: number</p>
-                            <p class="card-text">Wind: number</p>
-                            <p class="card-text">Humidity: number</p>
-                        </div>
-                    </div> -->
+                    <!-- the five day forcast (a card for each) will be rendered here -->
                 </div>
-
             </div>
         </section>
     </main>

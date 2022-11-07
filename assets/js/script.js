@@ -1,4 +1,4 @@
-// GLobal variables
+// Global variables
 const apiKey = '6c6f4753724094c73aa3d202e8779c99';
 
     // Container for the five day forecast object array
@@ -9,7 +9,7 @@ let forecastArray = [];
 const currDay = new Date().getDate();
 
 
-// Function deifnitions
+// Function definitions
 
 // The top-level fetch sequence function -- will get called based upon the 'form submission' event listener
 function getForecasts(city) {
@@ -58,6 +58,7 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             buildCurrent(currentWeatherObject);
             setStorage(currentWeatherObject.city);
         })
+        // Adding an 'error' clause
         .catch(function (error) {
             emptyContainers();
             $('#currentWeather').append($('<p>').text(`Hmm.. something went wrong \n ${error.message}`));
@@ -98,6 +99,7 @@ function getWeatherFields(currUrl, fiveDayUrl) {
             }
             buildFiveDay(forecastArray);
         })
+        // Adding an 'error' clause
         .catch(function (error) {
             emptyContainers();
             $('#currentWeather').append($('<p>').text(`Hmm.. something went wrong.. \n ${error.message}`));
@@ -186,9 +188,6 @@ function reformatDate(dateField) {
 }
 
 // Helper function to convert the 10-digit timestamp (from current forecast) into the uniform date format
-
-    // Give credit for this? http://danhounshell.com/
-
 function convertTenDigitDate(timestamp) {
     const pubDate = new Date(timestamp * 1000);
     const twoDigitDay = pubDate.getDate().toString().length === 1 ? `0${pubDate.getDate()}` : pubDate.getDate();
@@ -202,7 +201,7 @@ function cityOnly (string) {
     if (string.includes(',')) {
         result = string.split(',')[0]
     }
-    return result
+    return result;
 }
 // Helper function to ensure the icon given is for daytime
     // There are some 'night' icons associated with forecasts from noon, which is an error on the APIs part
@@ -219,7 +218,6 @@ function emptyContainers() {
     forecastArray = [];
     $('#cardsContainer, #currentWeather').empty();
 }
-
 
 
 // Load persisted search history into the list
@@ -253,4 +251,4 @@ $('#searchHistory').click(function(event) {
         // Run the big boy function to render the weather/forecast elements in the city inside the clicked 'li'
         getForecasts(clickedEl.innerText);
     }
-})
+});

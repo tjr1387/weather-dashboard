@@ -1,8 +1,10 @@
+/* I used Bootstrap for a lot fo the styling, so this file isn't very big */
 :root {
     --dark-purple: rgb(28, 1, 63);
     --tranzish: .4s ease-in-out;
 }
 
+/* A few general styling bits */
 body {
     font-family: 'Trebuchet', sans-serif;
     background-color: lightcyan;
@@ -17,14 +19,7 @@ h3 {
     font-size: 24px;
 }
 
-#citySearch:focus {
-    border: 2px solid orange;
-}
-
-#currentWeather {
-    height: 220px;
-}
-
+/* Search form styling */
 #submitSearch {
     background-color: var(--dark-purple);
 }
@@ -34,6 +29,28 @@ h3 {
     cursor: pointer;
 }
 
+#citySearch:focus {
+    border: 2px solid orange;
+}
+
+/* Search history list item styling */
+.history-item {
+    font-weight: 600;
+    background-color: yellow;
+}
+
+.history-item:hover {
+    border: 1px solid var(--dark-purple);
+    opacity: 80%;
+    cursor: pointer;
+}
+
+/* Current weather area */
+#currentWeather {
+    height: 220px;
+}
+
+/* Five-day forecast area styling */
 #fiveDayForecast {
     height: 280px;
 }
@@ -50,20 +67,8 @@ h3 {
     font-weight: 500;
 }
 
-/* This is for the li's in the search history */
-.history-item {
-    font-weight: 600;
-    background-color: yellow;
-}
-
-.history-item:hover {
-    border: 1px solid var(--dark-purple);
-    opacity: 80%;
-    cursor: pointer;
-}
 
 /* Media queries */
-
 @media (max-width: 1000px) {
     .card-title {
         font-size: 14px;
@@ -76,14 +81,7 @@ h3 {
     }
 
     .history-item {
-        font-size: 11px;
+        font-size: 10px;
         transition: var(--tranzish);
-    }
-}
-
-
-@media (max-width: 750px) {
-    #searchContainer {
-        
     }
 }
