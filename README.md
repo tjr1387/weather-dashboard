@@ -12,7 +12,7 @@ N/A
 ## Usage
 When the user puts in a city to be searched, fetch requests to the Open Weather API will be sent for that city. The search is designed to take only the city name (any state/country after a comma will be ignored, for simplicity's sake). It should be noted that typos will either return no result (a message will show in that case) or will use whatever filtering the Open Weather API uses to automatically find the closest match (this leads to some interesting city names being chosen!). The current weather is displayed, and a five-day forecast is also displayed _using the noon time window for that day_. Below the search form is a list of searched cities, which the user can click on to get weather information for that city again (time may have passed since the last time that city was searched -- so it will perform another fetch from the API). The search history is locally stored. 
 
-Screenshot(s): 
+Screenshot(s): ![With a big search history!](/assets/my-mockup.png?raw=true)
 
 Link to live site: 
 
