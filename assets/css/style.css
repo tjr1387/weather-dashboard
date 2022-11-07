@@ -1,6 +1,15 @@
+:root {
+    --dark-purple: rgb(28, 1, 63);
+}
+
 body {
     font-family: 'Trebuchet', sans-serif;
     background-color: lightcyan;
+}
+
+header {
+    background-color: var(--dark-purple);
+    border-bottom: 2px solid yellow;
 }
 
 h3 {
@@ -13,6 +22,15 @@ h3 {
 
 #currentWeather {
     height: 220px;
+}
+
+#submitSearch {
+    background-color: var(--dark-purple);
+}
+
+#submitSearch:hover {
+    opacity: 80%;
+    cursor: pointer;
 }
 
 #fiveDayForecast {
@@ -34,10 +52,11 @@ h3 {
 /* This is for the li's in the search history */
 .history-item {
     font-weight: 600;
+    background-color: yellow;
 }
 
 .history-item:hover {
-    border: 1px solid purple;
+    border: 1px solid var(--dark-purple);
     opacity: 80%;
     cursor: pointer;
 }

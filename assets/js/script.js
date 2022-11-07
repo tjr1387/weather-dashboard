@@ -111,7 +111,7 @@ function buildCurrent(object) {
     const tempEl = $('<p>').text(object.temp);
     const windEl = $('<p>').text(object.wind);
     const humidityEl = $('<p>').text(object.humidity);
-    $('#currentWeather').addClass('border border-success').append(cityDate, icon, tempEl, windEl, humidityEl);
+    $('#currentWeather').addClass('border border-primary').append(cityDate, icon, tempEl, windEl, humidityEl);
 }
 
 // Using the array of object built from the 5-day forecast fetch call, renders its 'card' elements
@@ -140,7 +140,7 @@ function buildFiveDay(objArray) {
     // Add the searched city to local storage (if it isn't already in there)
 function addToSearchList (cityStr) {
     // Create the 'li', put the city string in it, and add Bootstrap style classes
-    const cityListEl = $('<li>').text(cityStr).addClass('history-item w-100 p-2 text-center m-1 rounded bg-warning');
+    const cityListEl = $('<li>').text(cityStr).addClass('history-item w-100 p-2 text-center m-1 rounded');
     // Add to the 'ul'
     $('#searchHistory').append(cityListEl);
 }
