@@ -1,5 +1,5 @@
 # Week 6 Challenge - Weather Dashboard
-#### Building a current &amp; 5-day forecast for selected cities, using server-side APIs
+#### Building a current &amp; 5-day forecast for selected cities, using Open Weather API (server-side)
 
 ## Description
  This page will allow the user to search for a city, returning both the current weather conditions and five-day forecast for that city, as per the Open Weather API. The searched city will also be added to a search history list (clicking on a city in the list will search that city again), as well as the browser's local storage.
